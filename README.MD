@@ -5,7 +5,10 @@
 Please note that the tester failing does *not* necessarily mean that your program generated the wrong output,
 if 2 threads output simultaneously, the order may not be the same every time.
 
-To run this, first make sure the script is executable by running `chmod u+x ./tester.sh`
+To download this, first run `git clone https://github.com/ZuperZeus/csc360a2tester`
+Once you have downloaded the files, move `Makefile` and `p2.c` inside the `csc360a2tester` folder
+Then `cd` into `csc360a2tester`
+Once inside the folder, to be able to run the tester, make the script executable by running `chmod u+x ./tester.sh`
 Then, if you have your own files, run:
 ```
 ./tester.sh <input file> <output file>
@@ -15,7 +18,7 @@ or, if you are using the provided files, run
 ./tester.sh <num>.trains <num>.results
 ```
 
-If using the provided files, note each file number tests something different, the specifics are explained here:
+If using the provided files, note that each file number tests something different, the specifics are explained here:
 
 ### 1
 This is the default test file provided in the assignment pdf
@@ -36,7 +39,6 @@ integrates all of the previous examples, and should test all rules, a more detai
 ```
 W 0 20 //first train to ensure there will always be an opposite train, no trains finish loading before second 2.0
 //High priority:
-	W 0 20
 	//Different from last, i.e. alternating directions
 		//Load first
 			E 1 2
