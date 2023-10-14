@@ -33,7 +33,6 @@ This test file has 3 trains, 2 have everything identical except for load. lower 
 This test file has 2 identical trains, the only difference is in where they appear in the input file. train 0 goes first
 ### 8
 integrates all of the previous examples, and should test all rules, a more detailed explanation follows below:
-Test case 8 is the following, but this one has comments, 8.trains does not
 ```
 	W 0 20 //first train to ensure there will always be an opposite train, no trains finish loading before second 2.0
 	//High priority:
@@ -47,7 +46,7 @@ Test case 8 is the following, but this one has comments, 8.trains does not
 				W 2 2
 		//Same as last, i.e. same direction for all
 			W 3 2
-			W 4 2 //At this point, Eastbound trains are starved, so an 'e' must cross
+			W 4 2 //At this point, Eastbound trains are starved, so an e must cross
 			e 0 2 //included to test the starvation rule, 0 to avoid other low priority trains from crossing here
 			W 5 2
 			W 6 2
