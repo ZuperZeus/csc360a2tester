@@ -69,6 +69,8 @@ W 0 20 //first train to ensure there will always be an opposite train, no trains
 ## Examples
 This is an example of the correct output for case 1
 ```
+running make...
+make done, running your program...
      1  00:00:00.3 Train  2 is ready to go East                              1  00:00:00.3 Train  2 is ready to go East
      2  00:00:00.3 Train  2 is ON the main track going East                  2  00:00:00.3 Train  2 is ON the main track going East
      3  00:00:00.6 Train  1 is ready to go West                              3  00:00:00.6 Train  1 is ready to go West
@@ -82,6 +84,8 @@ The program has passed this test :)
 ```
 This is an example of incorrect output, caused by running `./tester 1.trains 3.results`, which are files that don't match
 ```
+running make...
+make done, running your program...
      1  00:00:00.3 Train  2 is ready to go East                      |       1  00:00:00.3 Train  0 is ready to go West
      2  00:00:00.3 Train  2 is ON the main track going East          |       2  00:00:00.3 Train  1 is ready to go West
      3  00:00:00.6 Train  1 is ready to go West                      |       3  00:00:00.3 Train  0 is ON the main track going West
