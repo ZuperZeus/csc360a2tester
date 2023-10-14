@@ -6,27 +6,35 @@ Please note that the tester failing does *not* necessarily mean that your progra
 if 2 threads output simultaneously, the order may not be the same every time.
 
 To run this, first make sure the script is executable by running `chmod u+x ./tester.sh`
-Then, run `./tester.sh <input file> <output file>` if you have your own files,
-or  `./tester.sh <num>.trains <num>.results` if using the provided files.
-If using the provided files, each file tests something different, the specifics are explained here:
+Then, if you have your own files, run:
+```
+./tester.sh <input file> <output file>
+```
+or, if you are using the provided files, run
+```
+./tester.sh <num>.trains <num>.results
+```
+
+If using the provided files, note each file number tests something different, the specifics are explained here:
 
 ### 1
-test file provided in the pdf
+This is the default test file provided in the assignment pdf
 ### 2
-has 4 W trains and 1 e train, to test that starvation rule
+This test file has 4 `W` trains and 1 `e` train, to test the starvation rule
 ### 3
-has 1 high priority and 1 low priority trains, to test the priority rules
+This test file has 1 high priority and 1 low priority trains, to test the priority rules
 ### 4
-has 3 high priority trains, E goes first, and then W should go first by 4b
+This test file has 3 high priority trains, `E` goes first, and then `W` should go first by 4b
 ### 5
-has 2 high priority trains, E and W, W should go first as Westbound has priority by 4b
+This test file has 2 high priority trains, `E` and `W`. `W` should go first as Westbound has priority by 4b
 ### 6
-has 3 trains, 2 have everything identical except for load. lower load should go first
+This test file has 3 trains, 2 have everything identical except for load. lower load should go first
 ### 7
-has 2 identical trains, the only difference is where they appear in the input file. train 0 goes first
+This test file has 2 identical trains, the only difference is in where they appear in the input file. train 0 goes first
 ### 8
 integrates all of the previous examples, and should test all rules, a more detailed explanation follows below:
 Test case 8 is the following, but this one has comments, 8.trains does not
+```
 	W 0 20 //first train to ensure there will always be an opposite train, no trains finish loading before second 2.0
 	//High priority:
 		W 0 20
@@ -58,3 +66,34 @@ Test case 8 is the following, but this one has comments, 8.trains does not
 			e 4 2
 			e 5 2
 			e 6 2
+```
+## Examples
+This is an example of the correct output for case 1
+```
+     1  00:00:00.3 Train  2 is ready to go East                              1  00:00:00.3 Train  2 is ready to go East
+     2  00:00:00.3 Train  2 is ON the main track going East                  2  00:00:00.3 Train  2 is ON the main track going East
+     3  00:00:00.6 Train  1 is ready to go West                              3  00:00:00.6 Train  1 is ready to go West
+     4  00:00:01.0 Train  0 is ready to go East                              4  00:00:01.0 Train  0 is ready to go East
+     5  00:00:01.3 Train  2 is OFF the main track after going East           5  00:00:01.3 Train  2 is OFF the main track after going East
+     6  00:00:01.3 Train  1 is ON the main track going West                  6  00:00:01.3 Train  1 is ON the main track going West
+     7  00:00:02.0 Train  1 is OFF the main track after going West           7  00:00:02.0 Train  1 is OFF the main track after going West
+     8  00:00:02.0 Train  0 is ON the main track going East                  8  00:00:02.0 Train  0 is ON the main track going East
+     9  00:00:02.6 Train  0 is OFF the main track after going East           9  00:00:02.6 Train  0 is OFF the main track after going East
+The program has passed this test :)
+```
+This is an example of incorrect output, caused by running the wrong output file
+```
+     1  00:00:00.3 Train  2 is ready to go East                      |       1  00:00:00.3 Train  0 is ready to go West
+     2  00:00:00.3 Train  2 is ON the main track going East          |       2  00:00:00.3 Train  1 is ready to go West
+     3  00:00:00.6 Train  1 is ready to go West                      |       3  00:00:00.3 Train  0 is ON the main track going West
+     4  00:00:01.0 Train  0 is ready to go East                      |       4  00:00:01.0 Train  0 is OFF the main track after going West
+     5  00:00:01.3 Train  2 is OFF the main track after going East   |       5  00:00:01.0 Train  1 is ON the main track going West
+     6  00:00:01.3 Train  1 is ON the main track going West          |       6  00:00:01.4 Train  1 is OFF the main track after going West
+     7  00:00:02.0 Train  1 is OFF the main track after going West   <
+     8  00:00:02.0 Train  0 is ON the main track going East          <
+     9  00:00:02.6 Train  0 is OFF the main track after going East   <
+The program might have failed this test
+Please check that the errors marked are correct
+Some false errors may be because of threads outputting simultaneously
+```
+As you may note, `|` denotes different lines (i.e. errors) and `>`,`<` denotes lines that are present on one side only

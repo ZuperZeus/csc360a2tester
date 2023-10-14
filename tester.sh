@@ -23,15 +23,17 @@ then
 	echo "output file: $2"
 	exit
 fi
+echo "running make..."
 make > /dev/null
 if ! [[ $? -eq 0 ]]
 then
 	echo "make failed, exiting..."
 	exit
 fi
+echo "make done, running your program..."
 #run the program with the output file, 
 #and check for any differences against the output file
-./mts $1 | diff --side-by-side <(nl -) <(nl $2)
+./mts $1 | diff --width=140 --side-by-side <(nl -) <(nl $2)
 if [[ $? -eq 0 ]]
 then
 	echo "The program has passed this test :)"
