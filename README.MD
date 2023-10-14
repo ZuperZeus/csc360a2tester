@@ -6,9 +6,13 @@ Please note that the tester failing does *not* necessarily mean that your progra
 if 2 threads output simultaneously, the order may not be the same every time.
 
 To download this, first run `git clone https://github.com/ZuperZeus/csc360a2tester`
+
 Once you have downloaded the files, move `Makefile` and `p2.c` inside the `csc360a2tester` folder
+
 Then `cd` into `csc360a2tester`
+
 Once inside the folder, to be able to run the tester, make the script executable by running `chmod u+x ./tester.sh`
+
 Then, if you have your own files, run:
 ```
 ./tester.sh <input file> <output file>
