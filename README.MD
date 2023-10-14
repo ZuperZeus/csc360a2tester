@@ -34,37 +34,37 @@ This test file has 2 identical trains, the only difference is in where they appe
 ### 8
 integrates all of the previous examples, and should test all rules, a more detailed explanation follows below:
 ```
-	W 0 20 //first train to ensure there will always be an opposite train, no trains finish loading before second 2.0
-	//High priority:
-		W 0 20
-		//Different from last, i.e. alternating directions
-			//Load first
-				E 1 2
-				W 1 2
-			//Load last
-				E 2 2
-				W 2 2
-		//Same as last, i.e. same direction for all
-			W 3 2
-			W 4 2 //At this point, Eastbound trains are starved, so an e must cross
-			e 0 2 //included to test the starvation rule, 0 to avoid other low priority trains from crossing here
-			W 5 2
-			W 6 2
-	//Low priority:
-		//Different from last, i.e. alternating directions
-			//Load first
-				e 1 2
-				w 1 2
-			//Load last
-				e 2 2
-				w 2 2
-		//Same as last, i.e. same direction for all
-		//starvation, but there are no Westbound trains
-		//This should not cause an error
-			e 3 2
-			e 4 2
-			e 5 2
-			e 6 2
+W 0 20 //first train to ensure there will always be an opposite train, no trains finish loading before second 2.0
+//High priority:
+	W 0 20
+	//Different from last, i.e. alternating directions
+		//Load first
+			E 1 2
+			W 1 2
+		//Load last
+			E 2 2
+			W 2 2
+	//Same as last, i.e. same direction for all
+		W 3 2
+		W 4 2 //At this point, Eastbound trains are starved, so an e must cross
+		e 0 2 //included to test the starvation rule, 0 to avoid other low priority trains from crossing here
+		W 5 2
+		W 6 2
+//Low priority:
+	//Different from last, i.e. alternating directions
+		//Load first
+			e 1 2
+			w 1 2
+		//Load last
+			e 2 2
+			w 2 2
+	//Same as last, i.e. same direction for all
+	//starvation, but there are no Westbound trains
+	//This should not cause an error
+		e 3 2
+		e 4 2
+		e 5 2
+		e 6 2
 ```
 ## Examples
 This is an example of the correct output for case 1
@@ -80,7 +80,7 @@ This is an example of the correct output for case 1
      9  00:00:02.6 Train  0 is OFF the main track after going East           9  00:00:02.6 Train  0 is OFF the main track after going East
 The program has passed this test :)
 ```
-This is an example of incorrect output, caused by running the wrong output file
+This is an example of incorrect output, caused by running `./tester 1.trains 3.results`, which are files that don't match
 ```
      1  00:00:00.3 Train  2 is ready to go East                      |       1  00:00:00.3 Train  0 is ready to go West
      2  00:00:00.3 Train  2 is ON the main track going East          |       2  00:00:00.3 Train  1 is ready to go West
