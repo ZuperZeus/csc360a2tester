@@ -73,6 +73,8 @@ W 0 20 //first train to ensure there will always be an opposite train, no trains
 		e 6 2
 ```
 ## Examples
+The lines provided by your program will always be on the left, and the output file will be on the right (same order as `./tester <input file> <output file>`). Differences are marked in the center.
+### Correct output
 This is an example of the correct output for case 1
 ```
 running make...
@@ -88,6 +90,7 @@ make done, running your program...
      9  00:00:02.6 Train  0 is OFF the main track after going East           9  00:00:02.6 Train  0 is OFF the main track after going East
 The program has passed this test :)
 ```
+### Incorrect output
 This is an example of incorrect output, caused by running `./tester 1.trains 3.results`, which are files that don't match
 ```
 running make...
@@ -106,3 +109,22 @@ Please check that the errors marked are correct
 Some false errors may be because of threads outputting simultaneously
 ```
 As you may note, `|` denotes different lines (i.e. errors) and `>`,`<` denotes lines that are present on one side only
+
+### False negative
+This is an example of an output that is correct, but was marked as incorrect due to simultaneous output
+```
+running make...
+make done, running your program...
+     1  00:00:00.3 Train  1 is ready to go West                      |       1  00:00:00.3 Train  0 is ready to go West
+     2  00:00:00.3 Train  0 is ready to go West                      |       2  00:00:00.3 Train  1 is ready to go West
+     3  00:00:00.3 Train  0 is ON the main track going West                  3  00:00:00.3 Train  0 is ON the main track going West
+     4  00:00:01.0 Train  0 is OFF the main track after going West           4  00:00:01.0 Train  0 is OFF the main track after going West
+     5  00:00:01.0 Train  1 is ON the main track going West                  5  00:00:01.0 Train  1 is ON the main track going West
+     6  00:00:01.4 Train  1 is OFF the main track after going West           6  00:00:01.4 Train  1 is OFF the main track after going West
+The program might have failed this test
+Please check that the errors marked are correct
+Some false errors may be because of threads outputting simultaneously
+```
+As you can see, `tester` marks some errors, but this is only because the order of the outbut changed, not because the output is incorrect.
+If you get an error, you must carefullt check the lines marked as `|`, to check whether it is a false negative.
+This functionality is intended, as it is better to have false negatives than false positives.
