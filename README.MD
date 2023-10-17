@@ -75,7 +75,7 @@ W 0 20 //first train to ensure there will always be an opposite train, no trains
 ## Examples
 The lines provided by your program will always be on the left, and the output file will be on the right (same order as `./tester <input file> <output file>`). Differences are marked in the center.
 ### Correct output
-This is an example of the correct output for case 1
+This is an example of the correct output for case 1.
 ```
 running make...
 make done, running your program...
@@ -91,7 +91,7 @@ make done, running your program...
 The program has passed this test :)
 ```
 ### Incorrect output
-This is an example of incorrect output, caused by running `./tester 1.trains 3.results`, which are files that don't match
+This is an example of incorrect output, caused by running `./tester 1.trains 3.results`, which are files that don't match.
 ```
 running make...
 make done, running your program...
@@ -108,10 +108,10 @@ The program might have failed this test
 Please check that the errors marked are correct
 Some false errors may be because of threads outputting simultaneously
 ```
-As you may note, `|` denotes different lines (i.e. errors) and `>`,`<` denotes lines that are present on one side only
+As you may note, `|` denotes different lines (i.e. errors) and `>`,`<` denotes lines that are present on one side only.
 
 ### False negative
-This is an example of an output that is correct, but was marked as incorrect due to simultaneous output
+This is an example of an output that is correct, but was marked as incorrect due to simultaneous output.
 ```
 running make...
 make done, running your program...
@@ -126,5 +126,5 @@ Please check that the errors marked are correct
 Some false errors may be because of threads outputting simultaneously
 ```
 As you can see, `tester` marks some errors, but this is only because the order of the outbut changed, not because the output is incorrect.
-If you get an error, you must carefullt check the lines marked as `|`, to check whether it is a false negative.
+If you get an error, you must carefully check the lines marked as `|`, to check whether it is a false negative.
 This functionality is intended, as it is better to have false negatives than false positives.
