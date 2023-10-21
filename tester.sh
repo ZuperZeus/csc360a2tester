@@ -35,6 +35,12 @@ then
 	echo "make failed, exiting..."
 	exit
 fi
+if ! [[ -f ./mts ]]
+then
+	echo "The make file must output the output with the name 'mts' as per section 5.1.4"
+	echo "The tester couldn't find this file, so it is now exiting..."
+	exit
+fi
 echo "make done, running your program..."
 #run the program with the output file, 
 #and check for any differences against the output file
